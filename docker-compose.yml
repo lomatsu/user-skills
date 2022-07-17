@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # user-skill-api:
+  #   build: .
+  #   container_name: "user-skill-api"
+  #   command: sh -c "npm run knex:migrate && npm run build && npm run start:dev"
+  #   ports:
+  #     - 3001:3001
+  #   volumes:
+  #     - .:/usr/app
+  #   links:
+  #     - user-skill-db
+  #   depends_on:
+  #     - user-skill-db
+  #   environment:
+  #     DB_HOST: host.doker.internal
+  #     DB_USER: postgres
+  #     DB_PASS: 1234@mudar
+  user-skill-db:
+    image: postgres:alpine
+    container_name: user-skill-db
+    user: postgres
+    ports:
+      - "5435:5432"
+    environment:
+        POSTGRES_NAME: user_skill_db
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 1234@mudar
+        POSTGRES_HOST: 127.0.0.1
+        POSTGRES_PORT: 5432
+    volumes:
+      - user_skill_db:/var/lib/postgresql/data
+
+volumes:
+  user_skill_db:
