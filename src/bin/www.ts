@@ -11,8 +11,8 @@ import { Request, Response } from "express"
 import Debug from "../common/debug"
 import { AddressInfo } from "net"
 import { tableName } from "../database/helps"
-import { registerUserRoute } from "../routes"
-import { UserRepository } from "../repositories"
+import { registerUserRoute, registerSkillRoute } from "../routes"
+import { SkillRepository, UserRepository, UserSkillRepository } from "../repositories"
 const debug = Debug()
 
 app.use("/api/health-check", (_: Request, res: Response) => {
@@ -42,6 +42,11 @@ app.use("/api/health-check-database", (_: Request, res: Response) => {
 registerUserRoute(
 	app,
 	new UserRepository(knex)
+)
+registerSkillRoute(
+	app,
+	new SkillRepository(knex),
+	new UserSkillRepository(knex)
 )
 
 /**

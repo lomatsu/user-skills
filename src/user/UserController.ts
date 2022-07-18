@@ -33,7 +33,7 @@ export class UserController extends ControllerBase<IUserRepository> {
 			console.log("checkPassword", secret);
 
 			if (!checkPassword) {
-				res.status(400).json({ message: "Verify email and password" })
+				res.status(400).json({ message: "Verify login and password" })
 				return
 			}
 
@@ -61,7 +61,7 @@ export class UserController extends ControllerBase<IUserRepository> {
 
 			res.json(response)
 		} catch (error) {
-			res.status(500).json({ message: "Error on get user by email" })
+			res.status(500).json({ message: "Error on get user by login" })
 		}
 	}
 
