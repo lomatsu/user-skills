@@ -5,8 +5,8 @@ import { tableName } from "../helps";
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(tableName.USER, function (table) {
     table.increments("id", { primaryKey: true })
-    table.string("login", 12).notNullable()
-    table.string("password", 100).notNullable()
+    table.string("login", 255).notNullable()
+    table.string("password", 255).notNullable()
     table.date("last_login_date").nullable()
     table.timestamps(true, true)
   })

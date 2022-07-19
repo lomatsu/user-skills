@@ -10,13 +10,13 @@ export async function seed(knex: Knex): Promise<void> {
       return;
     }
 
-    const passwordHash = await encrypt(process.env.PASSWORD);
+    const passwordHash: string = await encrypt(process.env.PASSWORD)
 
     await knex(tableName.USER).insert([
       {
         login: "admin@gmail.com",
         password: passwordHash,
-        lastLoginDate: "2022-07-17",
+
       },
     ]);
   } catch (error) {

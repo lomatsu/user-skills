@@ -4,7 +4,7 @@ Este repositório é um MVP criado para gerir skills de usuários
 
 Ambientes:
 
-- Local - [localhost:3000](http://localhost:3000/)
+- Local - [localhost:3000](http://localhost:3333/)
 
 
 ## Contents

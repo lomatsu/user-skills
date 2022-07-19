@@ -30,7 +30,6 @@ export class UserController extends ControllerBase<IUserRepository> {
 				return
 			}
 			const checkPassword = await decrypt(password, userExists.password)
-			console.log("checkPassword", secret);
 
 			if (!checkPassword) {
 				res.status(400).json({ message: "Verify login and password" })
@@ -41,13 +40,12 @@ export class UserController extends ControllerBase<IUserRepository> {
 			res.json({ token })
 		} catch (error) {
 			res.status(500).json({ message: "Error on login" })
-
 		}
 	}
 
 	public async getByLogin(req: Request, res: Response): Promise<void> {
 		try {
-			let login: string = req.params.login as string
+			const login: string = req.params.login as string
 			if (!login) {
 				res.status(400).json({ message: "login is required" })
 				return
